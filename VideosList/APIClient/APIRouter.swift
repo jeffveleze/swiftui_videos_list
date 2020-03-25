@@ -10,7 +10,7 @@ import Alamofire
 import Foundation
 
 struct APIRouter {
-    var url: URL?
+    var url: URL!
 
     init(urlString: String) {
       self.url = URL(string: urlString)
@@ -19,11 +19,11 @@ struct APIRouter {
 
 extension APIRouter: URLConvertible {
     func asURL() -> URL {
-        return url!
+        return url
     }
 }
 
-enum APIRouteError: LocalizedError {
+enum APIRouterError: LocalizedError {
     case invalidURL
 
     var errorDescription: String? {
@@ -33,6 +33,8 @@ enum APIRouteError: LocalizedError {
         }
     }
 }
+
+// MARK: - Routes
 
 enum APIRoute {
     case videos

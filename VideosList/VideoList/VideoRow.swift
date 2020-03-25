@@ -14,12 +14,13 @@ struct VideoRow: View {
 
     var body: some View {
         HStack {
+            // Load image dynamically
             URLImage(video.thumbnail) { proxy in
-            proxy.image
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .clipped()
-                .cornerRadius(5)
+                proxy.image
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .clipped()
+                    .cornerRadius(5)
             }
             .frame(width: 60, height: 60)
             

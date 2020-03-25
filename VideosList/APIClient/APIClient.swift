@@ -10,7 +10,13 @@ import Alamofire
 import Foundation
 import PromiseKit
 
-class APIClient {
+protocol APIClientProtocol {
+    func fetchVideos() -> Promise<Videos>
+}
+
+// Interface to handle API calls
+final class APIClient: APIClientProtocol {
+    // Generic function to perform all requests
     @discardableResult
     private func performRequest<T:Decodable>(route: APIRouter) -> Promise<T> {
         return Promise { seal in

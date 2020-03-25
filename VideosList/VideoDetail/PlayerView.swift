@@ -9,68 +9,37 @@
 import AVFoundation
 import SwiftUI
 
-struct PlayerContainerView : View {
-    private let player: AVPlayer
-        init(player: AVPlayer) {
-        self.player = player
-    }
-    
-    var body: some View {
-        ZStack(alignment: .center) {
-             PlayerView(player: player)
-                 .cornerRadius(5)
-             PlayerControlsView(player: player)
-         }
-        .onDisappear {
-            self.player.replaceCurrentItem(with: nil)
-        }
-    }
-}
-
-struct PlayerControlsView : View {
-    @State var playerPaused = true
-    
-    let player: AVPlayer
-    
-    var body: some View {
-        Button(action: {
-            self.playerPaused.toggle()
-            if self.playerPaused {
-                self.player.pause()
-            }
-            else {
-                self.player.play()
-            }
-        }) {
-            Image(playerPaused ? "play" : "pause")
-                .resizable()
-                .aspectRatio(contentMode: .fill)
-                .frame(width: 50, height: 50, alignment: .center)
-                .clipShape(Circle())
-                .foregroundColor(.blue)
-
-        }
-        .colorMultiply(.green)
-    }
-}
-
+// Interface required to link UIKit UIView with SwiftUI View
 struct PlayerView: UIViewRepresentable {
     let player: AVPlayer
+    let video: Video
     
-    func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<PlayerView>) {
-    }
+    func updateUIView(_ uiView: UIView, context: UIViewRepresentableContext<PlayerView>) {}
     
     func makeUIView(context: UIViewRepresentableContext<PlayerView>) -> UIView {
-        return PlayerUIView(player: player)
+        return PlayerUIView(player: player, video: video)
     }
 }
 
 class PlayerUIView: UIView {
     private let playerLayer = AVPlayerLayer()
+    private let video: Video
+    private var urlAsset: AVURLAsset!
     
-    init(player: AVPlayer) {
+    init(player: AVPlayer, video: Video) {
+        self.video = video
         super.init(frame: .zero)
+        
+        // Define player required elements
+        let assetKeys = ["duration", "playable"]
+        let urlAsset = AVURLAsset(url: video.link)
+        let playerItem = AVPlayerItem(asset: urlAsset, automaticallyLoadedAssetKeys: assetKeys)
+        player.replaceCurrentItem(with: playerItem)
+
+        // Make the video scale to the player view size
         playerLayer.videoGravity = .resizeAspectFill
+        
+        // Add the player to layer and insert layer on player view layer
         playerLayer.player = player
         layer.addSublayer(playerLayer)
     }
@@ -81,6 +50,7 @@ class PlayerUIView: UIView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
         playerLayer.frame = bounds
     }
 }

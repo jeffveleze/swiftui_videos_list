@@ -11,6 +11,7 @@ import SwiftUI
 struct Videos: Codable {
     var videos: [Video]
     
+    // Key from API response
     enum CodingKeys: String, CodingKey {
         case videos = "videos"
     }
@@ -23,6 +24,7 @@ struct Video: Codable, Identifiable {
     var description: String
     var link: URL
     
+    // Keys from API response
     enum CodingKeys: String, CodingKey {
         case id = "id"
         case name = "name"

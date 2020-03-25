@@ -10,27 +10,32 @@ import AVFoundation
 import SwiftUI
 
 struct VideoDetail: View {
+    @ObservedObject var videoDetailVM = VideoDetailVM()
+    
+    // Keeps the state whether alert is being displayed or not
+    @State private var showAlert = false
+
     let video: Video
     
-    private let screenHeight: CGFloat = UIScreen.main.bounds.size.height
-
     var body: some View {
         ZStack {
-            Color.white
-            .navigationBarItems(trailing:
+            
+            // Add navigation text and download button
+            Text("").navigationBarItems(trailing:
                 HStack(spacing: 15) {
-                    Text("Download video")
+                    Text(videoDetailVM.makeDownloadText())
                         .foregroundColor(.blue)
                     Button(action: {
-                        print("Hola")
+                        self.showAlert = true
                     }) {
-                        Image(systemName: "square.and.arrow.down")
+                        Image(systemName: videoDetailVM.makeImageName())
                     }
                 }
             )
             
+            // Add PlayerContainerView which contains PlayerView and Controls, video name and video description texts
             VStack(spacing: 15) {
-                PlayerContainerView(player: AVPlayer(url: video.link))
+                PlayerContainerView(video: video)
                     .cornerRadius(5)
 
                 Text(video.name)
@@ -43,6 +48,14 @@ struct VideoDetail: View {
             }
             .offset(y: -60)
             .padding(15)
+            
+        // Define alert to be presented when showAlert state changes
+        }.alert(isPresented: $showAlert) { () -> Alert in
+            Alert(title: Text(videoDetailVM.makeAlertTitle()),
+                  message: Text(videoDetailVM.makeAlertDescription()),
+                  dismissButton: .cancel()
+            )
         }
+        
     }
 }
