@@ -11,6 +11,7 @@ import UIKit
 
 class VideoListVM: ObservableObject {
     let apiClient: APIClient = APIClient()
+    let videosKey = "videos_key"
     
     @Published var videos = [Video]()
     
@@ -21,8 +22,27 @@ class VideoListVM: ObservableObject {
     func load() {
         apiClient.fetchVideos().done { videosList in
             self.videos = videosList.videos
+            self.save(videosList: videosList)
         }.catch { err in
-            print(err)
+            self.loadLocally()
+        }
+    }
+}
+
+private extension VideoListVM {
+    func save(videosList: Videos) {
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(videosList) {
+            UserDefaults.standard.set(encoded, forKey: videosKey)
+        }
+    }
+    
+    func loadLocally() {
+        if let savedVideosList = UserDefaults.standard.object(forKey: videosKey) as? Data {
+            let decoder = JSONDecoder()
+            if let loadedVideosList = try? decoder.decode(Videos.self, from: savedVideosList) {
+                self.videos = loadedVideosList.videos
+            }
         }
     }
 }

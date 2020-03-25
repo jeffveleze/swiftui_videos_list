@@ -18,20 +18,20 @@ struct APIRouter {
 }
 
 extension APIRouter: URLConvertible {
-  func asURL() -> URL {
-    return url!
-  }
+    func asURL() -> URL {
+        return url!
+    }
 }
 
 enum APIRouteError: LocalizedError {
-  case invalidURL
+    case invalidURL
 
-  var errorDescription: String? {
-    switch self {
-    case .invalidURL:
-      return "URL isn't valid"
+    var errorDescription: String? {
+        switch self {
+        case .invalidURL:
+          return "URL isn't valid"
+        }
     }
-  }
 }
 
 enum APIRoute {

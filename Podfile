@@ -5,6 +5,8 @@ target 'VideosList' do
   # Pods for VideosList
   pod 'Alamofire', '~> 5.0'
   pod "PromiseKit", '~> 6.8'
+  pod 'AlamofireImage', '~> 4.0'
+  pod 'URLImage'
 
   target 'VideosListTests' do
     inherit! :search_paths

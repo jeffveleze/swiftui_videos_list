@@ -7,13 +7,24 @@
 //
 
 import SwiftUI
+import URLImage
 
 struct VideoRow: View {
-    var video: Video
+    let video: Video
 
     var body: some View {
         HStack {
+            URLImage(video.thumbnail) { proxy in
+            proxy.image
+                .resizable()
+                .aspectRatio(contentMode: .fill)
+                .clipped()
+                .cornerRadius(5)
+            }
+            .frame(width: 60, height: 60)
+            
             Text(video.name)
+                .font(.subheadline)
         }
     }
 }
