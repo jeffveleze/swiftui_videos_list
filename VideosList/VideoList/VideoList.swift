@@ -12,15 +12,11 @@ struct VideoList: View {
     @ObservedObject var videoListVM: VideoListVM
     
     var body: some View {
-        // Add NavigationView Stack
-        NavigationView {
-            List(videoListVM.videos) { video in
-                // Push to VideoDetail View
-                NavigationLink(destination: VideoDetail(video: video)) {
-                    VideoRow(video: video)
-                }
+        List(videoListVM.videos) { video in
+            // Push to VideoDetail View
+            NavigationLink(destination: VideoDetail(video: video)) {
+                VideoRow(video: video)
             }
-            .navigationBarTitle(Text(videoListVM.makeTitleText()))
         }
     }
 }

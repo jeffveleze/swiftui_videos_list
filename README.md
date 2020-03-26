@@ -1,10 +1,4 @@
-# Project Title
-
-Videos List
-
-## Getting Started
-
-These instructions will get you a copy of the project up and running on your local machine for development and testing purposes
+# Videos List SwiftUI
 
 ### Prerequisites
 
@@ -25,12 +19,15 @@ What things you need to install
 * Controls to play and pause video player
 * SwiftUI views
 * MVVM architecture with injected dependencies
+* Looks good for dark and light mode
+
+## Pending Features
+
+* Download video
 
 ## Authors
 
-* **Jeff Velez** - *Initial work*
-
-See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.
+**Jeff Velez**
 
 ## License
 

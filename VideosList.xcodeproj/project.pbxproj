@@ -26,6 +26,9 @@
 		3D863D17242BD88D008DD310 /* PlayerControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D863D16242BD88D008DD310 /* PlayerControlsView.swift */; };
 		3D863D19242BD8CD008DD310 /* PlayerContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D863D18242BD8CD008DD310 /* PlayerContainerView.swift */; };
 		3D863D1D242C1520008DD310 /* APIClientTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D863D1C242C1520008DD310 /* APIClientTest.swift */; };
+		3D863D1F242C3658008DD310 /* VideoListScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D863D1E242C3658008DD310 /* VideoListScrollView.swift */; };
+		3D863D21242C4201008DD310 /* VideoListContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D863D20242C4201008DD310 /* VideoListContentView.swift */; };
+		3D863D23242C4314008DD310 /* RefreshCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3D863D22242C4314008DD310 /* RefreshCoordinator.swift */; };
 		AD1824E187743750EB04D2DB /* Pods_VideosList.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 309CAD38C4A005F99D72BA0C /* Pods_VideosList.framework */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +69,9 @@
 		3D863D16242BD88D008DD310 /* PlayerControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerControlsView.swift; sourceTree = "<group>"; };
 		3D863D18242BD8CD008DD310 /* PlayerContainerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerContainerView.swift; sourceTree = "<group>"; };
 		3D863D1C242C1520008DD310 /* APIClientTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClientTest.swift; sourceTree = "<group>"; };
+		3D863D1E242C3658008DD310 /* VideoListScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListScrollView.swift; sourceTree = "<group>"; };
+		3D863D20242C4201008DD310 /* VideoListContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoListContentView.swift; sourceTree = "<group>"; };
+		3D863D22242C4314008DD310 /* RefreshCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshCoordinator.swift; sourceTree = "<group>"; };
 		61F63E058058AFB06EC05A38 /* Pods-VideosList.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideosList.debug.xcconfig"; path = "Target Support Files/Pods-VideosList/Pods-VideosList.debug.xcconfig"; sourceTree = "<group>"; };
 		7B4AA902E59DD97E23994E67 /* Pods_VideosListTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VideosListTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -156,7 +162,10 @@
 		3D863D0424299B87008DD310 /* VideoList */ = {
 			isa = PBXGroup;
 			children = (
+				3D863D22242C4314008DD310 /* RefreshCoordinator.swift */,
 				3D863CFA24297615008DD310 /* VideoList.swift */,
+				3D863D20242C4201008DD310 /* VideoListContentView.swift */,
+				3D863D1E242C3658008DD310 /* VideoListScrollView.swift */,
 				3D863CFC2429770C008DD310 /* VideoRow.swift */,
 				3D863D0624299BCB008DD310 /* VideoListVM.swift */,
 			);
@@ -380,10 +389,13 @@
 				3D863D0A2429A07B008DD310 /* VideoDetail.swift in Sources */,
 				3D863CFB24297615008DD310 /* VideoList.swift in Sources */,
 				3D863D0724299BCB008DD310 /* VideoListVM.swift in Sources */,
+				3D863D1F242C3658008DD310 /* VideoListScrollView.swift in Sources */,
 				3D863D17242BD88D008DD310 /* PlayerControlsView.swift in Sources */,
+				3D863D23242C4314008DD310 /* RefreshCoordinator.swift in Sources */,
 				3D863CFD2429770C008DD310 /* VideoRow.swift in Sources */,
 				3D863CD424295800008DD310 /* AppDelegate.swift in Sources */,
 				3D863CD624295800008DD310 /* SceneDelegate.swift in Sources */,
+				3D863D21242C4201008DD310 /* VideoListContentView.swift in Sources */,
 				3D863D0D2429A3FB008DD310 /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

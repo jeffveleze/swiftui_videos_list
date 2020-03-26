@@ -10,6 +10,7 @@ import Foundation
 
 protocol VideoListVMProtocol: AnyObject {
     var videos: [Video] { get }
+    var viewDelegate: VideoListVMViewDelegate? { get set }
 
     func loadVideos()
     func makeTitleText() -> String
@@ -17,11 +18,17 @@ protocol VideoListVMProtocol: AnyObject {
     func loadVideosLocally()
 }
 
+protocol VideoListVMViewDelegate {
+    func videoListVMShouldStopRefreshing(_ videoListVM: VideoListVMProtocol)
+}
+
 final class VideoListVM: ObservableObject, VideoListVMProtocol {
     let apiClient: APIClientProtocol
     let videosKey = "videos_key"
 
     @Published var videos = [Video]()
+    
+    var viewDelegate: VideoListVMViewDelegate?
     
     init(apiClient: APIClientProtocol) {
         self.apiClient = apiClient
